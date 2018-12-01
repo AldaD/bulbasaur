@@ -83,7 +83,7 @@ private:
     QStringList header;
     QMap<QString, FileItem*> map;
     QList<QStandardItem*> buildRow(FileNode& node);
-    FileItem* parent(QString path);
+    FileItem* parentPath(QString path);
 };
 
 #endif // FILETREEMODEL_H

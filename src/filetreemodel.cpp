@@ -75,7 +75,7 @@ void FileTreeModel::updateNode(FileNode node)
 
 void FileTreeModel::addNode(FileNode node) {
     auto row = buildRow(node);
-    auto item = parent(node.filepath);
+    auto item = parentPath(node.filepath);
     if (item) {
         item->appendRow(row);
     } else {
@@ -106,7 +106,7 @@ QList<QStandardItem *> FileTreeModel::buildRow(FileNode& node) {
     return row;
 }
 
-FileItem *FileTreeModel::parent(QString path) {
+FileItem *FileTreeModel::parentPath(QString path) {
     QFileInfo fileInfo(path);
     auto parentPath = fileInfo.absoluteDir().absolutePath();
     auto item = map[parentPath];

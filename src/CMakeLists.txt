@@ -5,7 +5,14 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
-
+if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
+    set(CMAKE_CXX_FLAGS -O3)
+    # generate qm files
+    execute_process(COMMAND bash "translate_generation.sh"
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src)
+else ()
+    set(CMAKE_CXX_COMPILER "clang++")
+endif ()
 
 set(TARGET bulbasaur)
 
@@ -75,9 +82,11 @@ set(CPACK_PACKAGE_CONTACT "pikachuhy@163.com")
 
 #设置维护人
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "PikachuHy")
-
+set(CMAKE_INSTALL_PREFIX /usr)
 install(TARGETS ${TARGET} DESTINATION bin)
 install(FILES ../${TARGET}.desktop DESTINATION share/applications)
 install(FILES ../${TARGET}.png DESTINATION share/icons)
-
+# Install qm files
+file(GLOB QM_FILES "translations/*.qm")
+install(FILES ${QM_FILES} DESTINATION share/${TARGET}/translations)
 include(CPack)

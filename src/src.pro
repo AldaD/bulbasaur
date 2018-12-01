@@ -38,3 +38,7 @@ HEADERS += \
 
 RESOURCES += \
     icon.qrc
+
+TRANSLATIONS += \
+    translations/bulbasur_en.ts \
+    translations/bulbasur_zh.ts

@@ -26,6 +26,7 @@
 #include <DMainWindow>
 #include <DWidgetUtil>
 #include <DHiDPIHelper>
+#include <QTranslator>
 DWIDGET_USE_NAMESPACE
 
 int main(int argc, char *argv[])
@@ -53,7 +54,6 @@ int main(int argc, char *argv[])
 
         app.setTheme("light");
         app.setWindowIcon(QIcon(":/icon/icon.png"));
-
         MainWindow window;
 
         QObject::connect(&app, &DApplication::newInstanceStarted, &window, &MainWindow::activateWindow);
