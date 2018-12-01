@@ -21,21 +21,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-#include <DMainWindow>
-#include <QTreeView>
-#include "filetreemodel.h"
-class MainWindow : public DTK_WIDGET_NAMESPACE::DMainWindow
-{
-    Q_OBJECT
+#include "fileitem.h"
 
-public:
-    MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-private:
-    FileTreeModel* model;
-    QTreeView* view;
-};
+FileItem::FileItem() {
 
-#endif // MAINWINDOW_H
+}
+FileItem::FileItem(QString name) : QStandardItem(name) {
+    init();
+}
+
+FileItem::FileItem(const QIcon &icon, const QString &text) : QStandardItem(icon, text) {
+    init();
+}
+
+FileItem::FileItem(int num) : QStandardItem(QString::number(num)) {
+    init();
+}
+
+void FileItem::init() {
+    setEditable(false);
+    setDragEnabled(false);
+}
+
