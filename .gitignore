@@ -32,6 +32,9 @@ Makefile*
 # Qt unit tests
 target_wrapper.*
 
+# Qt translation bianry file
+*.qm
+
 # QtCreator
 *.autosave
 
