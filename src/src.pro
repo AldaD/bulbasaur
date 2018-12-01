@@ -40,5 +40,5 @@ RESOURCES += \
     icon.qrc
 
 TRANSLATIONS += \
-    translations/bulbasur_en.ts \
-    translations/bulbasur_zh.ts
+    translations/bulbasaur_en.ts \
+    translations/bulbasaur_zh.ts
